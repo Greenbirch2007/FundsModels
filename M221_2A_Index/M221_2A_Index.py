@@ -162,11 +162,22 @@ if __name__ == '__main__':
 
         big_list = []
         parse_Index()
+        time.sleep(0.5)
         parse_C6()
+        time.sleep(0.5)
+
         parse_C8()
+        time.sleep(0.5)
+
         parse_NOC8()
+        time.sleep(0.5)
+
         parse_NOC6()
+        time.sleep(0.5)
+
         parse_Arfa()
+        time.sleep(0.5)
+
         Portfolio = float(big_list[1]) + float(big_list[2]) + float(big_list[3]) + float(big_list[4]) + float(
             big_list[5])
         big_list.append(str(Portfolio))
@@ -179,7 +190,7 @@ if __name__ == '__main__':
         insertDB(content)
         print(datetime.datetime.now())
 
-
+# 为了保证数据完整，１分钟的到一次数据
 
 #
 #  Index_pl,c6_pl,c8_pl,noc8_pl,noc6_pl,arfa_pl,Portfolio_pl
