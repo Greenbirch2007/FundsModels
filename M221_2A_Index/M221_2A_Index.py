@@ -15,21 +15,22 @@ from selenium import webdriver
 
 
 # 2019.5.29 初步定的基金投资组合
+# 　所有数据都已２０１９年５月２９日收盘时为准
 # 广发证券	北方稀土	上海电力	上海电气	远兴能源　　上证指数
-# 6.3	12.44	8.2	5.3	2.7　　2909.9
+
 
 
 
 # 都假定做多
 
 # 成本价
-C6 = 13.26#广发证券
-C8 =12.44 #　北方稀土
-NOC6= 8.2  # 上海电力
-NOC8=5.3# 上海电气
-Arfa =2.7  # 远兴能源
+C6 = 13.16#广发证券
+C8 =13.55 #　北方稀土
+NOC6= 8.31  # 上海电力
+NOC8=5.33# 上海电气
+Arfa =2.83  # 远兴能源
 #　投资组合收益，通过上面的５个股票附上权重之后计算所得　Profilo=
-Index=2909.9   # 上证指数
+Index=2914.70   # 上证指数
 
 # 一个收益率一个一个计算
 
@@ -162,21 +163,21 @@ if __name__ == '__main__':
 
         big_list = []
         parse_Index()
-        time.sleep(0.5)
+        time.sleep(0.3)
         parse_C6()
-        time.sleep(0.5)
+        time.sleep(0.3)
 
         parse_C8()
-        time.sleep(0.5)
+        time.sleep(0.3)
 
         parse_NOC8()
-        time.sleep(0.5)
+        time.sleep(0.3)
 
         parse_NOC6()
-        time.sleep(0.5)
+        time.sleep(0.3)
 
         parse_Arfa()
-        time.sleep(0.5)
+        time.sleep(0.3)
 
         Portfolio = float(big_list[1]) + float(big_list[2]) + float(big_list[3]) + float(big_list[4]) + float(
             big_list[5])
