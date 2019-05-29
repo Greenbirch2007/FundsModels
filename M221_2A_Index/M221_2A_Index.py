@@ -193,9 +193,9 @@ if __name__ == '__main__':
 # noc8_pl varchar(10),
 # noc6_pl varchar(10),
 # arfa_pl varchar(10),
-# Portfolio_pl varchar(10)
+# Portfolio_pl varchar(50)
 # ) engine=InnoDB  charset=utf8;
 
 
-# drop  table FXSB_Japan;
+# drop  table M221_2A_Index;
 
