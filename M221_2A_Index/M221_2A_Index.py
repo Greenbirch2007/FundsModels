@@ -19,7 +19,7 @@ from selenium import webdriver
 # 广发证券	北方稀土	上海电力	上海电气	远兴能源　　上证指数
 
 
-
+# 变换数据源，从东方财富网，换成网页财经
 
 # 都假定做多
 
@@ -47,10 +47,10 @@ def call_page(url):
 
 
 def parse_Index():
-    url = 'http://quote.eastmoney.com/zs000001.html'
+    url = 'http://quotes.money.163.com/0000001.html#1b01'
     html = call_page(url)
     selector = etree.HTML(html)
-    Index_now = selector.xpath('//*[@id="price9"]/text()')
+    Index_now = selector.xpath('/html/body/div[2]/div[1]/div[3]/table/tbody/tr/td[2]/div/table/tbody/tr[1]/td[1]/span/strong/text()')
     Index_now_F = Index_now[0]
     items_float = float(Index_now_F)
     Index_PL = (items_float-Index)/Index  *100
@@ -66,10 +66,10 @@ def parse_Index():
 
 
 def parse_C6():
-    url = 'http://quote.eastmoney.com/sz000776.html'
+    url = 'http://quotes.money.163.com/1000776.html#9b01'
     html = call_page(url)
     selector = etree.HTML(html)
-    C6_now = selector.xpath('//*[@id="price9"]/text()')
+    C6_now = selector.xpath('/html/body/div[2]/div[1]/div[3]/table/tbody/tr/td[2]/div/table/tbody/tr[1]/td[1]/span/strong/text()')
     C6_now_F = C6_now[0]
     items_float = float(C6_now_F)
     C6_PL = (items_float-C6)/C6  *100
@@ -80,10 +80,10 @@ def parse_C6():
 
 
 def parse_C8():
-    url = 'http://quote.eastmoney.com/sh600111.html'
+    url = 'http://quotes.money.163.com/0600111.html#9b01'
     html = call_page(url)
     selector = etree.HTML(html)
-    C8_now = selector.xpath('//*[@id="price9"]/text()')
+    C8_now = selector.xpath('/html/body/div[2]/div[1]/div[3]/table/tbody/tr/td[2]/div/table/tbody/tr[1]/td[1]/span/strong/text()')
     C8_now_F = C8_now[0]
     items_float = float(C8_now_F)
     C8_PL = (items_float-C8)/C8  *100
@@ -95,10 +95,10 @@ def parse_C8():
 
 
 def parse_NOC8():
-    url = 'http://quote.eastmoney.com/sh601727.html'
+    url = 'http://quotes.money.163.com/0601727.html#9b01'
     html = call_page(url)
     selector = etree.HTML(html)
-    NOC8_now = selector.xpath('//*[@id="price9"]/text()')
+    NOC8_now = selector.xpath('/html/body/div[2]/div[1]/div[3]/table/tbody/tr/td[2]/div/table/tbody/tr[1]/td[1]/span/strong/text()')
     NOC8_now_F = NOC8_now[0]
     items_float = float(NOC8_now_F)
     NOC8_PL = (items_float-NOC8)/NOC8  *100
@@ -109,10 +109,10 @@ def parse_NOC8():
 
 
 def parse_NOC6():
-    url = 'http://quote.eastmoney.com/sh600021.html'
+    url = 'http://quotes.money.163.com/0600021.html#9b01'
     html = call_page(url)
     selector = etree.HTML(html)
-    NOC6_now = selector.xpath('//*[@id="price9"]/text()')
+    NOC6_now = selector.xpath('/html/body/div[2]/div[1]/div[3]/table/tbody/tr/td[2]/div/table/tbody/tr[1]/td[1]/span/strong/text()')
     NOC6_now_F = NOC6_now[0]
     items_float = float(NOC6_now_F)
     NOC6_PL = (items_float-NOC6)/NOC6  *100
@@ -122,10 +122,10 @@ def parse_NOC6():
     big_list.append(NOC6_PL_2_str)
 
 def parse_Arfa():
-    url = 'http://quote.eastmoney.com/sz000683.html'
+    url = 'http://quotes.money.163.com/1000683.html#9b01'
     html = call_page(url)
     selector = etree.HTML(html)
-    Arfa_now = selector.xpath('//*[@id="price9"]/text()')
+    Arfa_now = selector.xpath('/html/body/div[2]/div[1]/div[3]/table/tbody/tr/td[2]/div/table/tbody/tr[1]/td[1]/span/strong/text()')
     Arfa_now_F = Arfa_now[0]
     items_float = float(Arfa_now_F)
     Arfa_PL = (items_float-Arfa)/Arfa  *100
@@ -163,22 +163,16 @@ if __name__ == '__main__':
 
         big_list = []
         parse_Index()
-        time.sleep(1)
+        time.sleep(2)
         parse_C6()
-        time.sleep(0.3)
-
+        time.sleep(0.2)
         parse_C8()
-        time.sleep(0.3)
-
+        time.sleep(0.2)
         parse_NOC8()
-        time.sleep(0.3)
-
+        time.sleep(0.2)
         parse_NOC6()
-        time.sleep(0.3)
-
+        time.sleep(0.2)
         parse_Arfa()
-        time.sleep(0.3)
-
         Portfolio = float(big_list[1]) + float(big_list[2]) + float(big_list[3]) + float(big_list[4]) + float(
             big_list[5])
         Portfolio_PL_2 = round(Portfolio, 2)
