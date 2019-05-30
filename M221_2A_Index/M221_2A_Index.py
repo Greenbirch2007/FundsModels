@@ -163,7 +163,7 @@ if __name__ == '__main__':
 
         big_list = []
         parse_Index()
-        time.sleep(0.3)
+        time.sleep(1)
         parse_C6()
         time.sleep(0.3)
 
@@ -181,7 +181,8 @@ if __name__ == '__main__':
 
         Portfolio = float(big_list[1]) + float(big_list[2]) + float(big_list[3]) + float(big_list[4]) + float(
             big_list[5])
-        big_list.append(str(Portfolio))
+        Portfolio_PL_2 = round(Portfolio, 2)
+        big_list.append(str(Portfolio_PL_2)) # 这里专门将组合取２位小数
 
         driver.quit()
 
