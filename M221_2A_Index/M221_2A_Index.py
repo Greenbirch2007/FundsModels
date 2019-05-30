@@ -14,7 +14,7 @@ from math import floor
 from selenium import webdriver
 
 
-# 2019.5.29 初步定的基金投资组合
+# 2019.5.30 初步定的基金投资组合
 # 　所有数据都已２０１９年５月２９日收盘时为准
 # 广发证券	北方稀土	上海电力	上海电气	远兴能源　　上证指数
 
@@ -24,13 +24,13 @@ from selenium import webdriver
 # 都假定做多
 
 # 成本价
-C6 = 13.16#广发证券
-C8 =13.55 #　北方稀土
-NOC6= 8.31  # 上海电力
-NOC8=5.33# 上海电气
-Arfa =2.83  # 远兴能源
+C6 = 13.06#广发证券
+C8 =12.96 #　北方稀土
+NOC6= 8.26  # 上海电力
+NOC8=5.27# 上海电气
+Arfa =2.82  # 远兴能源
 #　投资组合收益，通过上面的５个股票附上权重之后计算所得　Profilo=
-Index=2914.70   # 上证指数
+Index=2905.81   # 上证指数
 
 # 一个收益率一个一个计算
 
@@ -163,7 +163,7 @@ if __name__ == '__main__':
 
         big_list = []
         parse_Index()
-        time.sleep(2)
+        time.sleep(6)
         parse_C6()
         time.sleep(0.2)
         parse_C8()
@@ -200,7 +200,8 @@ if __name__ == '__main__':
 # noc8_pl varchar(10),
 # noc6_pl varchar(10),
 # arfa_pl varchar(10),
-# Portfolio_pl varchar(50)
+# Portfolio_pl varchar(50),
+# LastTime timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 # ) engine=InnoDB  charset=utf8;
 
 
