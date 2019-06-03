@@ -36,10 +36,7 @@ Index=2905.81   # 上证指数
 
 
 
-def call_page(url):
-    driver.get(url)
-    html = driver.page_source
-    return html
+
 
 # 　选择依次请求５个股票和一个指数后再关闭浏览器
 
@@ -47,9 +44,15 @@ def call_page(url):
 
 
 def parse_Index():
+    driver = webdriver.Chrome()
     url = 'http://quotes.money.163.com/0000001.html#1b01'
-    html = call_page(url)
+
+    driver.get(url)
+    html = driver.page_source
+    driver.quit()
+
     selector = etree.HTML(html)
+
     Index_now = selector.xpath('/html/body/div[2]/div[1]/div[3]/table/tbody/tr/td[2]/div/table/tbody/tr[1]/td[1]/span/strong/text()')
     Index_now_F = Index_now[0]
     items_float = float(Index_now_F)
@@ -66,9 +69,16 @@ def parse_Index():
 
 
 def parse_C6():
+    driver = webdriver.Chrome()
+
+
     url = 'http://quotes.money.163.com/1000776.html#9b01'
-    html = call_page(url)
+    driver.get(url)
+    html = driver.page_source
+    driver.quit()
+
     selector = etree.HTML(html)
+
     C6_now = selector.xpath('/html/body/div[2]/div[1]/div[3]/table/tbody/tr/td[2]/div/table/tbody/tr[1]/td[1]/span/strong/text()')
     C6_now_F = C6_now[0]
     items_float = float(C6_now_F)
@@ -80,9 +90,15 @@ def parse_C6():
 
 
 def parse_C8():
+    driver = webdriver.Chrome()
+
     url = 'http://quotes.money.163.com/0600111.html#9b01'
-    html = call_page(url)
+    driver.get(url)
+    html = driver.page_source
+    driver.quit()
+
     selector = etree.HTML(html)
+
     C8_now = selector.xpath('/html/body/div[2]/div[1]/div[3]/table/tbody/tr/td[2]/div/table/tbody/tr[1]/td[1]/span/strong/text()')
     C8_now_F = C8_now[0]
     items_float = float(C8_now_F)
@@ -95,9 +111,15 @@ def parse_C8():
 
 
 def parse_NOC8():
+    driver = webdriver.Chrome()
+
     url = 'http://quotes.money.163.com/0601727.html#9b01'
-    html = call_page(url)
+    driver.get(url)
+    html = driver.page_source
+    driver.quit()
+
     selector = etree.HTML(html)
+
     NOC8_now = selector.xpath('/html/body/div[2]/div[1]/div[3]/table/tbody/tr/td[2]/div/table/tbody/tr[1]/td[1]/span/strong/text()')
     NOC8_now_F = NOC8_now[0]
     items_float = float(NOC8_now_F)
@@ -109,9 +131,16 @@ def parse_NOC8():
 
 
 def parse_NOC6():
+    driver = webdriver.Chrome()
+
+
     url = 'http://quotes.money.163.com/0600021.html#9b01'
-    html = call_page(url)
+    driver.get(url)
+    html = driver.page_source
+    driver.quit()
+
     selector = etree.HTML(html)
+
     NOC6_now = selector.xpath('/html/body/div[2]/div[1]/div[3]/table/tbody/tr/td[2]/div/table/tbody/tr[1]/td[1]/span/strong/text()')
     NOC6_now_F = NOC6_now[0]
     items_float = float(NOC6_now_F)
@@ -122,9 +151,15 @@ def parse_NOC6():
     big_list.append(NOC6_PL_2_str)
 
 def parse_Arfa():
+    driver = webdriver.Chrome()
+
     url = 'http://quotes.money.163.com/1000683.html#9b01'
-    html = call_page(url)
+    driver.get(url)
+    html = driver.page_source
+    driver.quit()
+
     selector = etree.HTML(html)
+
     Arfa_now = selector.xpath('/html/body/div[2]/div[1]/div[3]/table/tbody/tr/td[2]/div/table/tbody/tr[1]/td[1]/span/strong/text()')
     Arfa_now_F = Arfa_now[0]
     items_float = float(Arfa_now_F)
@@ -159,28 +194,27 @@ def insertDB(content):
 if __name__ == '__main__':
 
     while True:
-        driver = webdriver.Chrome()
 
         big_list = []
-        time.sleep(2)
 
         parse_Index()
-        time.sleep(2)
+
         parse_C6()
-        time.sleep(0.2)
+
         parse_C8()
-        time.sleep(0.2)
+
         parse_NOC8()
-        time.sleep(0.2)
+
         parse_NOC6()
-        time.sleep(0.2)
+
+
         parse_Arfa()
+
         Portfolio = float(big_list[1]) + float(big_list[2]) + float(big_list[3]) + float(big_list[4]) + float(
             big_list[5])
         Portfolio_PL_2 = round(Portfolio, 2)
         big_list.append(str(Portfolio_PL_2)) # 这里专门将组合取２位小数
 
-        driver.quit()
 
         l_tuple = tuple(big_list)
         content = []
