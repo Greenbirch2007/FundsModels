@@ -1,0 +1,33 @@
+
+
+create database AJ_2Sm;
+
+
+use AJ_2Sm;
+
+
+create table Daily_table (
+id int not null primary key auto_increment,
+ST varchar(10),
+As_PL varchar(10),
+As_Name varchar(15),
+Ai_PL varchar(10),
+Ai_Name varchar(15),
+Js_PL varchar(10),
+Js_Name varchar(15),
+Ji_PL varchar(10),
+Ji_Name varchar(15),
+As_contents text,
+Js_contents text
+) engine=InnoDB default charset=utf8;
+
+drop  table Daily_table;
+
+select As_PL,Js_PL,As_contents ,Js_contents  from Daily_table;
+
+
+excel表名必须和mysql数据库中的表名一致！
+
+每3个月独立备份一次交易日历数据，以便后续查看！
+
+
